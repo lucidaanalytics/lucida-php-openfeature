@@ -1,0 +1,22 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
+        with:
+          php-version: "8.3"
+          tools: composer
+      # lucida/lucida resolves from Packagist, or from the public source until it is submitted there.
+      - run: composer config repositories.lucida-php vcs https://github.com/lucidaanalytics/lucida-php
+      # no release tag exists yet, so alias the branch to the composer.json constraint (CI only; composer.json stays clean)
+      - run: composer require --no-update 'lucida/lucida:dev-main as 0.1.0'
+      - run: composer install --no-interaction --prefer-dist
+      - run: php tests/run.php

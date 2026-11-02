@@ -1,0 +1,10 @@
+{
+  "name": "lucida/openfeature",
+  "description": "OpenFeature server provider for Lucida (PHP)",
+  "type": "library",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/lucidaanalytics/lucida-php-openfeature",
+  "require": { "php": ">=8.1", "lucida/lucida": "^0.1", "open-feature/sdk": "^2.0" },
+  "autoload": { "psr-4": { "Lucida\\OpenFeature\\": "src/" } },
+  "scripts": { "test": "php tests/run.php" }
+}
