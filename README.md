@@ -2,8 +2,12 @@
 
 OpenFeature server provider over the Lucida PHP SDK. Pinned to `open-feature/sdk ^2.0` (Apache-2.0).
 
+From GitHub, [lucidaanalytics/lucida-php-openfeature](https://github.com/lucidaanalytics/lucida-php-openfeature), release `v0.1.0` (both packages need a `vcs` repository entry until Packagist; the Packagist install is coming):
+
 ```bash
-composer require lucida/openfeature
+composer config repositories.lucida vcs https://github.com/lucidaanalytics/lucida-php
+composer config repositories.lucida-of vcs https://github.com/lucidaanalytics/lucida-php-openfeature
+composer require "lucida/lucida:^0.1" "lucida/openfeature:^0.1"
 ```
 
 ```php
